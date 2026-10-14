@@ -1,0 +1,33 @@
+{
+  "name": "form-bhaiya",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A second pair of eyes for cyber cafés that fill government exam forms: reads the notice, checks the candidate, fixes the photo",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 4200",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "node --test \"test/unit/*.test.js\"",
+    "test:api": "node --test --test-concurrency=1 test/api.test.js",
+    "test:e2e": "node --test --test-concurrency=1 test/e2e.test.js",
+    "test:all": "npm run lint && npm test && npm run build && npm run test:api && npm run test:e2e"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.21.0",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "unpdf": "^1.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.0",
+    "puppeteer-core": "^25.13.0"
+  }
+}
