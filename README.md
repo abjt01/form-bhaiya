@@ -9,6 +9,8 @@ Across India, a lot of exam applications (SSC, UPSC, railways, state commissions
 
 Drop the notice PDF in. Form Bhaiya reads it once with open-weight models and shows the line in the notice behind every answer. Then the café checks each candidate at the counter, prints a Hindi slip for them to take home, and fixes their photo and signature to the exact size, all in the browser.
 
+**Try it:** [form-bhaiya.onrender.com](https://form-bhaiya.onrender.com). It's on a free plan, so the first load after a quiet spell takes about half a minute.
+
 ![Recording: opening a real notice, checking a candidate, making the slip and fixing a signature](docs/demo.gif)
 
 <table>
