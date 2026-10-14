@@ -193,6 +193,7 @@ input:focus-visible, select:focus-visible, .btn:focus-visible, button:focus-visi
 .notice-head { padding: 18px 0 6px; }
 .notice-head .meta { color: var(--muted); font-size: 0.9rem; }
 .tally { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+.tally .pill { white-space: normal; }
 .jump { font-weight: 600; font-size: 0.9rem; }
 @media (min-width: 980px) { .jump { display: none; } }
 .layout { display: grid; gap: 0 24px; }

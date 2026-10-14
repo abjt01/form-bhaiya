@@ -20,8 +20,10 @@ function freePort() {
   });
 }
 
-export function tempDataDir() {
-  return fs.mkdtempSync(path.join(os.tmpdir(), "form-bhaiya-"));
+export function tempDataDir(notices) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "form-bhaiya-"));
+  if (notices) fs.writeFileSync(path.join(dir, "notices.json"), JSON.stringify(notices));
+  return dir;
 }
 
 export async function startServer({ env = {}, dataDir = tempDataDir() } = {}) {

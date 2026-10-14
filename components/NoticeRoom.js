@@ -23,7 +23,8 @@ function countdown(date, kind) {
 function tally(read) {
   const items = [];
   const b = read.basics || {};
-  items.push(b.exam, b.website, ...(b.dates || []), ...(b.fees || []));
+  // only what has a stamp on the page, so the count matches what the café can tap
+  items.push(b.website, ...(b.dates || []), ...(b.fees || []));
   items.push(...(read.age?.rules || []), ...(read.age?.relaxations || []));
   items.push(...(read.uploads?.items || []), ...(read.education?.items || []), read.education?.finalYear, ...(read.documents?.items || []));
   const real = items.filter((x) => x?.check);
