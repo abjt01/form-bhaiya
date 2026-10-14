@@ -1,0 +1,694 @@
+{
+ "id": "ssc-chsl-2026",
+ "sha": "74eb89c24cb232000393f0ad9b9edce7ac2b2ebda100248090581676a162dfb8",
+ "fileName": "Notice_of_adv_chsl_2026.pdf",
+ "pageCount": 88,
+ "createdAt": "2026-10-14T09:05:21.009Z",
+ "updatedAt": "2026-10-14T09:12:43.811Z",
+ "status": "done",
+ "models": {
+  "mock": false,
+  "big": "openai/gpt-oss-120b",
+  "small": "openai/gpt-oss-20b",
+  "side": "qwen/qwen3.8-27b"
+ },
+ "jobs": {
+  "basics": {
+   "status": "done",
+   "label": "Exam, dates and fees",
+   "model": "openai/gpt-oss-120b",
+   "startedAt": "2026-10-14T09:05:21.017Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:05:24.608Z"
+  },
+  "age": {
+   "status": "done",
+   "label": "Age limits and relaxations",
+   "model": "openai/gpt-oss-120b",
+   "startedAt": "2026-10-14T09:05:24.609Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:08:25.513Z"
+  },
+  "uploads": {
+   "status": "done",
+   "label": "Photo and signature",
+   "model": "openai/gpt-oss-20b",
+   "startedAt": "2026-10-14T09:05:21.088Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:05:22.132Z"
+  },
+  "education": {
+   "status": "done",
+   "label": "Who can apply",
+   "model": "qwen/qwen3.8-27b",
+   "startedAt": "2026-10-14T09:05:21.118Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:05:22.632Z"
+  },
+  "documents": {
+   "status": "done",
+   "label": "Documents to bring",
+   "model": "openai/gpt-oss-20b",
+   "startedAt": "2026-10-14T09:05:22.133Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:08:22.276Z"
+  }
+ },
+ "read": {
+  "uploads": {
+   "items": [
+    {
+     "kind": "signature",
+     "label": "scanned signature",
+     "live": false,
+     "format": "JPG",
+     "minKB": 10,
+     "maxKB": 20,
+     "widthPx": null,
+     "heightPx": null,
+     "widthCm": 6,
+     "heightCm": 2,
+     "notes": null,
+     "quote": "Candidates are required to upload the scanned signature in JPEG/JPG format (10 to 20 KB). Image dimension of the signature should be about 6.0 cm (width) x 2.0 cm (height).",
+     "page": 12,
+     "check": {
+      "status": "verified",
+      "page": 12,
+      "match": "exact"
+     }
+    }
+   ]
+  },
+  "education": {
+   "items": [
+    {
+     "appliesTo": "All",
+     "requirement": "The candidate must be a citizen of India, a subject of Nepal or Bhutan, or a person of Indian origin from specified countries with a certificate of eligibility.",
+     "quote": "A candidate must be either: (a) a citizen of India, or (b) a subject of Nepal, or (c) a subject of Bhutan, or (d) a person of Indian origin who has migrated from Pakistan, Burma, Sri Lanka, East African countries of Kenya, Uganda, the United Republic of Tanzania(Formerly Tanganyika and Zanzibar),Zambia, Malawi, Zaire, Ethiopia and Vietnam with the intention of permanently settling in India.",
+     "page": 3,
+     "check": {
+      "status": "verified",
+      "page": 3,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "All",
+     "requirement": "The result of the required educational qualification must have been declared by the Board or University by the cut-off date of 2026-10-07.",
+     "quote": "It is reiterated that the result of required educational qualification must have been declared by the Board/ University by the cut-off date i.e. 07.10.2026. Mere processing of the result by the Board/ University by the cut-off date does not fulfill the EQ requirement.",
+     "page": 11,
+     "check": {
+      "status": "verified",
+      "page": 11,
+      "match": "exact"
+     }
+    }
+   ],
+   "finalYear": {
+    "allowed": true,
+    "detail": "Candidates who can prove by documentary evidence that the result of the qualifying examination was declared on or before the cut-off date and they have been declared passed will be considered to meet the educational qualification.",
+    "quote": "The candidates who can prove, by documentary evidence, that the result of the qualifying examination was declared on or before the cut-off date and he has been declared passed, will also be considered to meet the educational qualification.",
+    "page": 11,
+    "check": {
+     "status": "verified",
+     "page": 11,
+     "match": "exact"
+    }
+   }
+  },
+  "basics": {
+   "exam": {
+    "name": "Combined Higher Secondary (10+2) Level Examination, 2026",
+    "body": "Staff Selection Commission",
+    "quote": "Combined Higher Secondary (10+2) Level Examination, 2026",
+    "page": 1,
+    "check": {
+     "status": "verified",
+     "page": 1,
+     "match": "exact"
+    }
+   },
+   "website": {
+    "url": "https://ssc.gov.in/",
+    "quote": "(i.e. https://ssc.gov.in/ on 07-09-2026)",
+    "page": 1,
+    "check": {
+     "status": "verified",
+     "page": 1,
+     "match": "close"
+    }
+   },
+   "dates": [
+    {
+     "what": "Online applications open",
+     "kind": "apply_start",
+     "date": "2026-09-07",
+     "time": null,
+     "quote": "Dates for submission of online applications 07.09.2026 to 07.10.2026",
+     "page": 1,
+     "check": {
+      "status": "verified",
+      "page": 1,
+      "match": "exact"
+     }
+    },
+    {
+     "what": "Online applications close",
+     "kind": "apply_end",
+     "date": "2026-10-07",
+     "time": "23:00",
+     "quote": "Last date and time for receipt of online applications 07.10.2026 (23:00 Hours)",
+     "page": 1,
+     "check": {
+      "status": "verified",
+      "page": 1,
+      "match": "exact"
+     }
+    },
+    {
+     "what": "Online fee payment close",
+     "kind": "fee_end",
+     "date": "2026-10-08",
+     "time": "23:00",
+     "quote": "Last date and time for making online fee payment 08.10.2026 (23:00 Hours)",
+     "page": 1,
+     "check": {
+      "status": "verified",
+      "page": 1,
+      "match": "exact"
+     }
+    },
+    {
+     "what": "Application form correction window start",
+     "kind": "correction_start",
+     "date": "2026-10-14",
+     "time": null,
+     "quote": "Window for Application Form Correction [14-10-2026 to 16-10-2026 (23:00 Hours)]",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "exact"
+     }
+    },
+    {
+     "what": "Application form correction window end",
+     "kind": "correction_end",
+     "date": "2026-10-16",
+     "time": "23:00",
+     "quote": "Window for Application Form Correction [14-10-2026 to 16-10-2026 (23:00 Hours)]",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "exact"
+     }
+    }
+   ],
+   "fees": [
+    {
+     "label": "All candidates",
+     "amount": 100,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "quote": "Fee payable: Rs 100/- (Rs one hundred only).",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Women candidates",
+     "amount": 0,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": true,
+     "quote": "Women candidates ... are exempted from payment of fee.",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "elided"
+     }
+    },
+    {
+     "label": "SC/ST candidates",
+     "amount": 0,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "quote": "candidates belonging to Scheduled Castes (SC), Scheduled Tribes (ST) ... are exempted from payment of fee.",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "elided"
+     }
+    },
+    {
+     "label": "PwBD candidates",
+     "amount": 0,
+     "categories": [],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "quote": "Persons with Benchmark Disabilities (PwBD) ... are exempted from payment of fee.",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "elided"
+     }
+    },
+    {
+     "label": "ESM candidates",
+     "amount": 0,
+     "categories": [],
+     "pwbd": null,
+     "esm": true,
+     "women": null,
+     "quote": "Ex-servicemen (ESM) eligible for reservation are exempted from payment of fee.",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 13,
+      "match": "exact"
+     }
+    }
+   ]
+  },
+  "documents": {
+   "items": [
+    {
+     "name": "Income & Asset certificate for EWS category",
+     "when": "apply",
+     "quote": "Income & Asset certificate valid for the financial year 2026-2027 issued on the basis of Income for the financial year 2025-2026 in accordance with DoPT‟s OM No. 36039/1/ 2019-Estt (Res) dated 31.01.2019",
+     "page": 7,
+     "check": {
+      "status": "verified",
+      "page": 7,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Caste/Community certificate for OBC category",
+     "when": "apply",
+     "quote": "caste/ community certificate and does not fall in creamy layer on the crucial date",
+     "page": 7,
+     "check": {
+      "status": "verified",
+      "page": 7,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "OBC certificate (Annexure-X)",
+     "when": "apply",
+     "quote": "submit the requisite certificate as per the format (Annexure-X)",
+     "page": 7,
+     "check": {
+      "status": "verified",
+      "page": 7,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "EWS certificate (Annexure-XIV)",
+     "when": "apply",
+     "quote": "submit the requisite certificate as per Format (Annexure-XIV)",
+     "page": 7,
+     "check": {
+      "status": "verified",
+      "page": 7,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Mark sheets and Provisional Certificates for educational qualification",
+     "when": "verification",
+     "quote": "Candidates will be required to produce the relevant Certificates such as Mark sheets, Provisional Certificates etc. for completion of Intermediate/ Higher Secondary/ 10+2/ Senior Secondary in original as proof of having acquired the minimum educational qualification on or before the cutoff date",
+     "page": 11,
+     "check": {
+      "status": "verified",
+      "page": 11,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Photographs for examination",
+     "when": "verification",
+     "quote": "two passport size recent colour photographs",
+     "page": 14,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Original valid Photo-ID proof with Date of Birth",
+     "when": "verification",
+     "quote": "Original valid Photo-ID proof having the Date of Birth as printed on the Admission Certificate, such as: Voter‟s ID Card, Driving License, PAN Card, Passport, ID Card issued by University/ College/ School, Employer ID Card (Govt./ PSU), Ex-Serviceman Discharge Book issued by Ministry of Defence",
+     "page": 14,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "close"
+     }
+    },
+    {
+     "name": "Admission Certificate",
+     "when": "verification",
+     "quote": "Candidate must bring printout of the Admission Certificate to the Examination Hall",
+     "page": 14,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Aadhaar Card or printout of E-Aadhaar",
+     "when": "verification",
+     "quote": "Aadhaar Card/ printout of E-Aadhaar",
+     "page": 35,
+     "check": {
+      "status": "verified",
+      "page": 35,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Supporting certificate for Date of Birth if Photo ID lacks DOB",
+     "when": "verification",
+     "quote": "additional original certificate (as listed at Para-14.7) in proof of their Date of Birth",
+     "page": 35,
+     "check": {
+      "status": "verified",
+      "page": 35,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Scribe/compensatory time supporting documents for PwBD/PwD candidates",
+     "when": "verification",
+     "quote": "produce relevant documents for the eligibility of scribe/ compensatory time at the time of Examination and Document Verification",
+     "page": 13,
+     "check": {
+      "status": "verified",
+      "page": 10,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Physical and medical certificates",
+     "when": "verification",
+     "quote": "Physical and medical standards will be ascertained by the User Departments after the declaration of result",
+     "page": 24,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Caste/Category certificates for verification",
+     "when": "verification",
+     "quote": "certificates/ documents of EQs/ caste/ category, etc. as and when sought by the User Ministry/Department/ Organization",
+     "page": 24,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Admission Certificate download",
+     "when": "verification",
+     "quote": "Facility to download Admission Certificates will be made available 2-3 days before the examination on the website of the Commission",
+     "page": 14,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Registration Number, Roll Number, registered Email-ID and Mobile Number",
+     "when": "verification",
+     "quote": "Candidate must write Registration Number, Roll Number, registered Email-ID and Mobile Number along with name, date of birth and name of the examination",
+     "page": 14,
+     "check": {
+      "status": "verified",
+      "page": 24,
+      "match": "exact"
+     }
+    }
+   ]
+  },
+  "age": {
+   "rules": [
+    {
+     "appliesTo": "All posts",
+     "sex": null,
+     "bornFrom": "1999-08-02",
+     "bornTo": "2008-08-01",
+     "minAge": 18,
+     "maxAge": 27,
+     "asOn": "2026-08-01",
+     "notes": null,
+     "quote": "Age limit for the posts is 18-27 years i.e. Candidates born not before 02-08-1999 and not later than 01-08-2008 are eligible to apply.",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    }
+   ],
+   "relaxations": [
+    {
+     "label": "SC/ ST",
+     "years": 5,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "01 SC/ ST 5 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "OBC",
+     "years": 3,
+     "categories": [
+      "OBC"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "02 OBC 3 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "PwBD",
+     "years": 10,
+     "categories": [],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "03 PwBD 10 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "PwBD (OBC)",
+     "years": 13,
+     "categories": [
+      "OBC"
+     ],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "04 PwBD (OBC) 13 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "PwBD (SC/ ST)",
+     "years": 15,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "05 PwBD (SC/ ST) 15 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Ex-Servicemen (ESM)",
+     "years": 3,
+     "categories": [],
+     "pwbd": null,
+     "esm": true,
+     "women": null,
+     "manual": true,
+     "quote": "06 Ex-Servicemen (ESM) 03 years after deduction of the military service rendered from the actual age as on 01.08.2026",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Defence Personnel disabled in operation (general)",
+     "years": 3,
+     "categories": [],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "manual": true,
+     "quote": "08 Defence Personnel disabled in operation during hostilities with any foreign country or in a disturbed area and released as a consequence thereof. 03 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Defence Personnel disabled in operation (SC/ ST)",
+     "years": 8,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": true,
+     "esm": null,
+     "women": null,
+     "manual": true,
+     "quote": "09 Defence Personnel disabled in operation during hostilities with any foreign country or in a disturbed area and released as a consequence thereof (SC/ ST). 08 years",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Central Government Civilian Employees (general)",
+     "years": null,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "manual": true,
+     "quote": "10 Central Government Civilian Employees: Who have rendered not less than 3 years regular and continuous service as on closing date for receipt of online applications. Up to 40 years of age",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Central Government Civilian Employees (SC/ ST)",
+     "years": null,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "manual": true,
+     "quote": "11 Central Government Civilian Employees: Who have rendered not less than 3 years regular and continuous service as on closing date for receipt of online applications (SC/ ST). Up to 45 years of age",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Widows/Divorced Women/ Women judicially separated (general)",
+     "years": null,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": true,
+     "manual": true,
+     "quote": "12 Widows/ Divorced Women/ Women judicially separated and who are not remarried. Up to 35 years of age",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Widows/Divorced Women/ Women judicially separated (SC/ ST)",
+     "years": null,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": true,
+     "manual": true,
+     "quote": "13 Widows/ Divorced Women/ Women judicially separated and who are not remarried (SC/ ST). Up to 40 years of age",
+     "page": 4,
+     "check": {
+      "status": "verified",
+      "page": 4,
+      "match": "exact"
+     }
+    }
+   ]
+  }
+ },
+ "hi": null
+}

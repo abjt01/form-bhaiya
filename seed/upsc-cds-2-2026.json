@@ -1,0 +1,422 @@
+{
+ "id": "upsc-cds-2-2026",
+ "sha": "4ee10d94a8649eb3e6d4a0015ed538713cc99a232a8861a6d478678266bc1a5d",
+ "fileName": "cds2-2026.pdf",
+ "pageCount": 35,
+ "createdAt": "2026-10-14T09:05:21.721Z",
+ "updatedAt": "2026-10-14T09:11:23.168Z",
+ "status": "done",
+ "models": {
+  "mock": false,
+  "big": "openai/gpt-oss-120b",
+  "small": "openai/gpt-oss-20b",
+  "side": "qwen/qwen3.8-27b"
+ },
+ "jobs": {
+  "basics": {
+   "status": "done",
+   "label": "Exam, dates and fees",
+   "model": "openai/gpt-oss-120b",
+   "startedAt": "2026-10-14T09:05:21.723Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:07:23.704Z"
+  },
+  "age": {
+   "status": "done",
+   "label": "Age limits and relaxations",
+   "model": "openai/gpt-oss-120b",
+   "startedAt": "2026-10-14T09:07:23.706Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:10:25.368Z"
+  },
+  "uploads": {
+   "status": "done",
+   "label": "Photo and signature",
+   "model": "openai/gpt-oss-20b",
+   "startedAt": "2026-10-14T09:05:21.750Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:10:22.423Z"
+  },
+  "education": {
+   "status": "done",
+   "label": "Who can apply",
+   "model": "qwen/qwen3.8-27b",
+   "startedAt": "2026-10-14T09:05:21.768Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:07:23.272Z"
+  },
+  "documents": {
+   "status": "done",
+   "label": "Documents to bring",
+   "model": "openai/gpt-oss-20b",
+   "startedAt": "2026-10-14T09:10:22.425Z",
+   "error": null,
+   "doneAt": "2026-10-14T09:11:23.165Z"
+  }
+ },
+ "read": {
+  "education": {
+   "items": [
+    {
+     "appliesTo": "All",
+     "requirement": "The candidate must be a Citizen of India, a subject of Nepal, or a person of Indian origin from specified countries with a certificate of eligibility, except for Gorkha subjects of Nepal.",
+     "quote": "A candidate must either be: (i) a Citizen of India, or (ii) a subject of Nepal, or (iii) a person of Indian origin who has migrated from Pakistan, Burma, Sri Lanka, and East African Countries of Kenya, Uganda, the United Republic of Tanzania, Zambia, Malawi, Zaire and Ethiopia or Vietnam with the intention of permanently settling in India.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "IMA",
+     "requirement": "The candidate must be an unmarried male.",
+     "quote": "For IMA— Age: 19 to 24 years. Unmarried male candidates born not earlier than 1st July, 2003 and not later than 1st July, 2008 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Indian Naval Academy",
+     "requirement": "The candidate must be an unmarried male.",
+     "quote": "For Indian Naval Academy— Age: 19 to 24 years. Unmarried male candidates born not earlier than 1st July, 2003 and not later than 1st July, 2008 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Air Force Academy",
+     "requirement": "The candidate must be unmarried if below 25 years of age, and marriage is not permitted during training.",
+     "quote": "Note: Candidate below 25 years of age must be unmarried. Marriage is not permitted during training.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "IMA",
+     "requirement": "The candidate must hold a degree from a recognised university or an equivalent qualification.",
+     "quote": "For I.M.A. and Officers’ Training Academy, Chennai — Degree of a recognised University or equivalent.",
+     "page": 9,
+     "check": {
+      "status": "verified",
+      "page": 9,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Indian Naval Academy",
+     "requirement": "The candidate must hold a degree in Engineering or B.Sc. with Physics as a core or elective subject from a recognised university or institution, having studied Physics and Mathematics at the 10+2 level.",
+     "quote": "For Indian Naval Academy— A degree in Engineering or B.Sc. with Physics as core or elective subject from recognised University/ Institution (with Physics and Mathematics in 10+2 level).",
+     "page": 9,
+     "check": {
+      "status": "verified",
+      "page": 9,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Air Force Academy",
+     "requirement": "The candidate must hold a degree from a recognised university with Physics and Mathematics at the 10+2 level, or a Bachelor of Engineering degree.",
+     "quote": "For Air Force Academy—Degree of a recognised University (with Physics and Mathematics at 10+2 level) or Bachelor of Engineering.",
+     "page": 9,
+     "check": {
+      "status": "verified",
+      "page": 9,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Officers’ Training Academy, Chennai",
+     "requirement": "The candidate must hold a degree from a recognised university or an equivalent qualification.",
+     "quote": "For I.M.A. and Officers’ Training Academy, Chennai — Degree of a recognised University or equivalent.",
+     "page": 9,
+     "check": {
+      "status": "verified",
+      "page": 9,
+      "match": "exact"
+     }
+    }
+   ],
+   "finalYear": {
+    "allowed": true,
+    "detail": "Candidates studying in the final year or semester of a degree course who have not yet passed the final examination are eligible to apply, provided they submit proof of passing by the prescribed date.",
+    "quote": "Candidates who are studying in the final year/semester Degree course and have yet to pass the final year degree examination can also apply and they will be required to submit proof of passing the",
+    "page": 9,
+    "check": {
+     "status": "verified",
+     "page": 9,
+     "match": "exact"
+    }
+   }
+  },
+  "basics": {
+   "exam": {
+    "name": "COMBINED DEFENCE SERVICES EXAMINATION-II, 2026",
+    "body": "Union Public Service Commission",
+    "quote": "COMBINED DEFENCE SERVICES EXAMINATION-II, 2026",
+    "page": 1,
+    "check": {
+     "status": "verified",
+     "page": 1,
+     "match": "exact"
+    }
+   },
+   "website": {
+    "url": "https://upsconline.nic.in",
+    "quote": "Applicants are required to apply online by using the website https://upsconline.nic.in.",
+    "page": 1,
+    "check": {
+     "status": "verified",
+     "page": 1,
+     "match": "exact"
+    }
+   },
+   "dates": [
+    {
+     "what": "Online applications close",
+     "kind": "apply_end",
+     "date": "2026-06-09",
+     "time": "18:00",
+     "quote": "The Online Application can be filled upto 06:00 P.M. of 9th June, 2026.",
+     "page": 3,
+     "check": {
+      "status": "verified",
+      "page": 3,
+      "match": "exact"
+     }
+    },
+    {
+     "what": "Examination date",
+     "kind": "exam",
+     "date": "2026-09-13",
+     "time": null,
+     "quote": "Date of Examination 13.09.2026",
+     "page": 1,
+     "check": {
+      "status": "verified",
+      "page": 1,
+      "match": "exact"
+     }
+    }
+   ],
+   "fees": [
+    {
+     "label": "General",
+     "amount": 200,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "quote": "Candidates (except Female/SC/ST candidates who are exempted from payment of fee) are required to pay a fee of Rs. 200/-",
+     "page": 10,
+     "check": {
+      "status": "verified",
+      "page": 10,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "Female",
+     "amount": 0,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": true,
+     "quote": "ALL FEMALE CANDIDATES AND CANDIDATES BELONGING TO SCHEDULED CASTES/SCHEDULED TRIBES ARE NOT REQUIRED TO PAY ANY FEE.",
+     "page": 10,
+     "check": {
+      "status": "verified",
+      "page": 10,
+      "match": "exact"
+     }
+    },
+    {
+     "label": "SC/ST",
+     "amount": 0,
+     "categories": [
+      "SC",
+      "ST"
+     ],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "quote": "ALL FEMALE CANDIDATES AND CANDIDATES BELONGING TO SCHEDULED CASTES/SCHEDULED TRIBES ARE NOT REQUIRED TO PAY ANY FEE.",
+     "page": 10,
+     "check": {
+      "status": "verified",
+      "page": 10,
+      "match": "exact"
+     }
+    }
+   ]
+  },
+  "uploads": {
+   "items": []
+  },
+  "age": {
+   "rules": [
+    {
+     "appliesTo": "IMA",
+     "sex": "male",
+     "bornFrom": "2003-07-01",
+     "bornTo": "2008-07-01",
+     "minAge": 19,
+     "maxAge": 24,
+     "asOn": null,
+     "notes": null,
+     "quote": "For IMA— Age: 19 to 24 years. Unmarried male candidates born not earlier than 1st July, 2003 and not later than 1st July, 2008 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Indian Naval Academy",
+     "sex": "male",
+     "bornFrom": "2003-07-01",
+     "bornTo": "2008-07-01",
+     "minAge": 19,
+     "maxAge": 24,
+     "asOn": null,
+     "notes": null,
+     "quote": "For Indian Naval Academy— Age: 19 to 24 years. Unmarried male candidates born not earlier than 1st July, 2003 and not later than 1st July, 2008 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Air Force Academy",
+     "sex": null,
+     "bornFrom": "2003-07-01",
+     "bornTo": "2007-07-01",
+     "minAge": 20,
+     "maxAge": 24,
+     "asOn": "2027-07-01",
+     "notes": null,
+     "quote": "Air Force Academy— Age: 20 to 24 years as on 1st July, 2027 i.e. born not earlier than 1st July, 2003 and not later than 1st July, 2007.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "close"
+     }
+    },
+    {
+     "appliesTo": "Officers' Training Academy (SSC Course for men)",
+     "sex": "male",
+     "bornFrom": "2002-07-01",
+     "bornTo": "2008-07-01",
+     "minAge": 19,
+     "maxAge": 25,
+     "asOn": null,
+     "notes": null,
+     "quote": "Officers' Training Academy (SSC Course for men) — Age: 19 to 25 years. Unmarried male candidate born not earlier than 1st July 2002 and not later than 1st July, 2008 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    },
+    {
+     "appliesTo": "Officers' Training Academy (SSC Women Non-Technical Course)",
+     "sex": "female",
+     "bornFrom": "2002-07-01",
+     "bornTo": "2008-07-01",
+     "minAge": 19,
+     "maxAge": 25,
+     "asOn": null,
+     "notes": "Unmarried women, issueless widows who have not remarried and issueless divorcees",
+     "quote": "Officers' Training Academy (SSC Women Non-Technical Course) — Age: 19 to 25 years. Unmarried women, issueless widows who have not remarried and issueless divorcees (in possession of divorce documents) who have not remarried are eligible. They should have been born not earlier than 1st July, 2002 and not later than 1st July, 2008.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    }
+   ],
+   "relaxations": [
+    {
+     "label": "Commercial Pilot Licence holders",
+     "years": 2,
+     "categories": [],
+     "pwbd": null,
+     "esm": null,
+     "women": null,
+     "manual": false,
+     "quote": "Upper age limit for candidates holding valid and current Commercial Pilot Licence issued by DGCA (India) is relaxable upto 26 yrs. i.e. born not earlier than 1st July, 2001 and not later than 1st July, 2007 only are eligible.",
+     "page": 8,
+     "check": {
+      "status": "verified",
+      "page": 8,
+      "match": "exact"
+     }
+    }
+   ]
+  },
+  "documents": {
+   "items": [
+    {
+     "name": "Photograph",
+     "when": "apply",
+     "quote": "Applicants are required to upload their photograph and also capture their live photograph while filling up the Common Application Form (CAF).",
+     "page": 11,
+     "check": {
+      "status": "verified",
+      "page": 11,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Live Photograph",
+     "when": "apply",
+     "quote": "Applicants are required to upload their photograph and also capture their live photograph while filling up the Common Application Form (CAF).",
+     "page": 11,
+     "check": {
+      "status": "verified",
+      "page": 11,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Signature (three times)",
+     "when": "apply",
+     "quote": "Applicants are required to sign three times (one below the other) on a plain white paper using black ink and upload the same while filling up the Common Application Form (CAF).",
+     "page": 11,
+     "check": {
+      "status": "verified",
+      "page": 11,
+      "match": "exact"
+     }
+    },
+    {
+     "name": "Bonafide Certificate",
+     "when": null,
+     "quote": "Candidates who are studying in the final year/semester degree course are required to submit at the time of SSB interview a bonafide certificate issued by University/College stating that they will be able to submit their proof of passing the graduation degree examination by the specified date.",
+     "page": 10,
+     "check": {
+      "status": "verified",
+      "page": 10,
+      "match": "close"
+     }
+    }
+   ]
+  }
+ },
+ "hi": null
+}

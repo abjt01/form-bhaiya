@@ -154,6 +154,11 @@ describe("checking quotes against the notice", () => {
     assert.deepEqual(locate(split, "born not earlier than 02-08-1996 and not later than 01-08-2008", 1), { page: 1, match: "exact" });
   });
 
+  it("accepts a quote with its middle skipped, but only if every piece is there", () => {
+    assert.deepEqual(locate(pages, "Women candidates ... are exempted from payment of fee", 1), { page: 2, match: "elided" });
+    assert.equal(locate(pages, "Women candidates … are exempted from all examinations", 1), null);
+  });
+
   it("accepts a close quote but not an invented one", () => {
     assert.equal(locate(pages, "Women candidates and candidates of Scheduled Castes (SC), Scheduled Tribes (ST) are exempted from payment of fee", 2).match, "close");
     assert.equal(locate(pages, "Candidates must upload a photograph between 20 KB and 50 KB", 3), null);
@@ -265,8 +270,8 @@ describe("reading answers", async () => {
     );
     assert.equal(r.items[0].maxKB, null);
     assert.equal(r.items[0].check.status, "verified");
-    assert.equal(r.items[1].check.status, "check");
-    assert.match(r.items[1].check.why, /isn't about the photo/);
+    // the second "photo" only quotes the signature sentence, so it's dropped as a mislabelled copy
+    assert.equal(r.items.length, 1);
   });
 
   it("asks again when the relaxation table went missing", () => {
