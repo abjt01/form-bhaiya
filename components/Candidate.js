@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatDate, parseTypedDate } from "@/lib/dates";
+import { formatDate, parseTypedDate, todayIST } from "@/lib/dates";
 import { CATEGORIES, CATEGORY_NAMES, checkAge, feeFor, normaliseCandidate } from "@/lib/eligibility";
 import { api, readLocal, writeLocal } from "./api";
 
@@ -69,7 +69,11 @@ export default function Candidate({ notice }) {
   const L = lang === "hi" ? HI : EN;
   const t = (s) => (lang === "hi" && hi?.[s]) || s;
   const yes = ages.filter((a) => a.res.status === "yes");
-  const dates = (r.basics?.dates || []).filter((d) => ["apply_end", "fee_end", "correction_start", "correction_end", "exam"].includes(d.kind));
+  // the slip goes home with the candidate, so it only lists what's still ahead
+  const today = todayIST();
+  const dates = (r.basics?.dates || [])
+    .filter((d) => ["apply_end", "fee_end", "correction_start", "correction_end", "exam"].includes(d.kind) && d.date >= today)
+    .sort((a, b) => (a.date < b.date ? -1 : 1));
   const docs = (r.documents?.items || []).slice(0, 10);
 
   function slipText() {
@@ -180,9 +184,9 @@ export default function Candidate({ notice }) {
                   {res.window.derived ? " (worked out from the age range, check the notice)" : ""}
                 </span>
               )}
-              {res.manual?.length > 0 && (
+              {res.status !== "yes" && res.manual?.length > 0 && (
                 <span className="small" style={{ display: "block" }}>
-                  Also check by hand: {res.manual.map((m) => m.label).join("; ")}
+                  Unless one of these applies (check by hand): {res.manual.map((m) => m.label).join("; ")}
                 </span>
               )}
             </div>
@@ -255,7 +259,7 @@ export default function Candidate({ notice }) {
                 <ul>
                   {dates.map((d, i) => (
                     <li key={i}>
-                      {t(d.what)}: <span className="num">{formatDate(d.date, lang)}</span>
+                      {t(d.what)}: {formatDate(d.date, lang)}
                       {d.time ? `, ${d.time}` : ""}
                     </li>
                   ))}

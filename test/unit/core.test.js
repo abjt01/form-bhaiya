@@ -280,3 +280,60 @@ describe("reading answers", async () => {
     assert.equal(looksIncomplete("basics", { exam: null, dates: [] }, ""), true);
   });
 });
+
+describe("photo and signature sizes", async () => {
+  const { cleanInk, containRect, cropRect, fitToRange, inkBounds, readSpec, targetPixels } = await import("../../lib/imagespec.js");
+
+  it("reads the size the notice page links with, and falls back to a common size it says is a guess", () => {
+    const s = readSpec({ kind: "signature", min: "10", max: "20", wcm: "6", hcm: "2", n: "ssc-cgl-2026" });
+    assert.deepEqual(targetPixels(s), { w: 472, h: 157 });
+    assert.equal(s.notice, "ssc-cgl-2026");
+    assert.deepEqual(targetPixels(readSpec({ kind: "photo", wpx: "200", hpx: "230" })), { w: 200, h: 230 });
+    const guess = readSpec({ kind: "nonsense", min: "50", max: "20" });
+    assert.equal(guess.kind, "photo");
+    assert.equal(guess.sizeGuessed, true);
+    assert.deepEqual([guess.minKB, guess.maxKB], [20, 50]);
+    assert.equal(readSpec({ n: "../../etc" }).notice, null);
+  });
+
+  it("crops to the target's shape and keeps the crop inside the picture", () => {
+    const r = cropRect(4000, 3000, 200 / 230, 1, 0.5, 0.5);
+    assert.ok(Math.abs(r.sw / r.sh - 200 / 230) < 1e-9);
+    assert.equal(r.sh, 3000);
+    const edge = cropRect(4000, 3000, 1, 2, 1, 1);
+    assert.equal(edge.sx + edge.sw, 4000);
+    assert.equal(edge.sy + edge.sh, 3000);
+    const c = containRect(1000, 100, 472, 157);
+    assert.ok(c.dw <= 472 && c.dh <= 157 && c.dx >= 0 && c.dy >= 0);
+  });
+
+  it("whitens unevenly lit paper and keeps the ink dark", () => {
+    const w = 200;
+    const h = 100;
+    const data = new Uint8ClampedArray(w * h * 4);
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const i = (y * w + x) * 4;
+        const paper = 210 - x * 0.6; // light on the left, much darker on the right
+        const ink = y > 45 && y < 52 && x > 20 && x < 180;
+        data[i] = data[i + 1] = data[i + 2] = ink ? paper * 0.3 : paper;
+        data[i + 3] = 255;
+      }
+    }
+    cleanInk(data, w, h);
+    const at = (x, y) => data[(y * w + x) * 4];
+    assert.ok(at(10, 10) > 240 && at(190, 90) > 240, "paper is white at both ends");
+    assert.ok(at(30, 48) < 60 && at(170, 48) < 60, "ink is dark at both ends");
+    const box = inkBounds(data, w, h);
+    assert.ok(box.x <= 21 && box.x + box.w >= 179 && box.y <= 46 && box.y + box.h >= 51);
+  });
+
+  it("finds the JPEG quality that lands inside the KB range", async () => {
+    const encode = async (q) => ({ size: Math.round(5000 + 40000 * q) }); // bigger at higher quality
+    const r = await fitToRange(encode, { minKB: 20, maxKB: 30 });
+    assert.ok(r.ok && r.size <= 30 * 1024 && r.size >= 20 * 1024);
+    assert.equal((await fitToRange(encode, { maxKB: 100 })).quality, 1);
+    assert.equal((await fitToRange(encode, { minKB: 60 })).why, "small");
+    assert.equal((await fitToRange(encode, { maxKB: 2 })).why, "big");
+  });
+});

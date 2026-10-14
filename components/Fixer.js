@@ -33,7 +33,7 @@ function prepare(bitmap, rotate, clean, contain) {
   g.setTransform(1, 0, 0, 1, 0, 0);
   if (!clean) return c;
   const img = g.getImageData(0, 0, w, h);
-  cleanInk(img.data);
+  cleanInk(img.data, w, h);
   g.putImageData(img, 0, 0);
   if (!contain) return c;
   const box = inkBounds(img.data, w, h);
@@ -147,11 +147,22 @@ export default function Fixer({ initial }) {
     setBusy(true);
     setError("");
     try {
-      const c = canvas(w, h);
-      render(c, src.current, { spec, zoom, center, stamp });
-      const res = await fitToRange((q) => encode(c, q), spec);
+      // A clean signature can be too small even at full quality. When the notice gives centimetres,
+      // the same print size at a higher dpi has more pixels and lands inside the range.
+      const dpis = spec.widthPx ? [spec.dpi] : [...new Set([spec.dpi, 300, 400, 600].filter((d) => d >= spec.dpi))];
+      let res;
+      let size;
+      let dpi;
+      for (dpi of dpis) {
+        const at = { ...spec, dpi };
+        size = targetPixels(at);
+        const c = canvas(size.w, size.h);
+        render(c, src.current, { spec: at, zoom, center, stamp });
+        res = await fitToRange((q) => encode(c, q), spec);
+        if (res.why !== "small") break;
+      }
       if (out?.url) URL.revokeObjectURL(out.url);
-      setOut({ ...res, url: URL.createObjectURL(res.blob), w, h });
+      setOut({ ...res, url: URL.createObjectURL(res.blob), w: size.w, h: size.h, dpi: dpi !== spec.dpi ? dpi : null });
     } catch {
       setError("Couldn't make the file. Try a smaller picture.");
     } finally {
@@ -178,7 +189,7 @@ export default function Fixer({ initial }) {
 
   const num = (v) => (v === "" ? null : Number(v));
   const kbOk = out && (!spec.maxKB || out.size <= spec.maxKB * 1024) && (!spec.minKB || out.size >= spec.minKB * 1024);
-  const base = `${spec.kind}-${w}x${h}`;
+  const base = `${spec.kind}-${out?.w ?? w}x${out?.h ?? h}`;
 
   return (
     <div className="fixer">
@@ -328,6 +339,7 @@ export default function Fixer({ initial }) {
               <ul className="checks">
                 <li>
                   <span className="ok">✓</span> JPG, <span className="num">{out.w}×{out.h}</span> pixels
+                  {out.dpi && ` (${spec.widthCm}×${spec.heightCm} cm at ${out.dpi} dpi, to reach the smallest file size)`}
                 </li>
                 <li data-testid="kb">
                   <span className={kbOk ? "ok" : "bad"}>{kbOk ? "✓" : "✗"}</span> <span className="num">{kb(out.size)} KB</span>
