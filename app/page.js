@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const notices = await listNotices();
-  const open = notices.filter((n) => n.open !== false);
-  const closed = notices.filter((n) => n.open === false);
+  const closed = notices.filter((n) => n.open === false && n.status !== "reading");
+  const open = notices.filter((n) => !closed.includes(n));
   return (
     <main className="wrap">
       <section className="hero">

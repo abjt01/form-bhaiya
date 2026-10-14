@@ -149,6 +149,11 @@ describe("checking quotes against the notice", () => {
     assert.equal(locate(pages, "upload the scanned signature in JPEG/JPG format (10 to 20 KB)", 3).page, 3);
   });
 
+  it("finds a quote that runs over a page break", () => {
+    const split = ["Candidate must have been born not\nearlier than 02-08-1996 and not later", "than 01-08-2008.\n5.2 Permissible relaxation"];
+    assert.deepEqual(locate(split, "born not earlier than 02-08-1996 and not later than 01-08-2008", 1), { page: 1, match: "exact" });
+  });
+
   it("accepts a close quote but not an invented one", () => {
     assert.equal(locate(pages, "Women candidates and candidates of Scheduled Castes (SC), Scheduled Tribes (ST) are exempted from payment of fee", 2).match, "close");
     assert.equal(locate(pages, "Candidates must upload a photograph between 20 KB and 50 KB", 3), null);
@@ -184,11 +189,89 @@ describe("finding the right passages", () => {
     assert.ok(excerpts(pages, ["fee", "age", "examination"], 130).reduce((a, e) => a + e.text.length, 0) <= 130);
   });
 
+  it("carries a sentence cut by the page break over from the next page", () => {
+    const split = ["5.1 For posts with age limit 18-30 years: born not earlier than 02-08-1996 and not later", "than 01-08-2008.\nMore text on the next page about something else entirely."];
+    const [ex] = excerpts(split, ["age limit born not earlier"], 10_000);
+    assert.equal(ex.page, 1);
+    assert.match(ex.text, /not later\nthan 01-08-2008/);
+  });
+
   it("splits long pages into overlapping windows", () => {
     const long = Array.from({ length: 60 }, (_, i) => `Line ${i} of a long page about the examination.`).join("\n");
     const ps = passages([long]);
     assert.ok(ps.length > 2);
     assert.ok(ps.every((p) => p.text.length <= 900));
     assert.ok(ps[1].start < ps[0].end);
+  });
+});
+
+describe("reading answers", async () => {
+  const { normalise: tidy, looksIncomplete } = await import("../../lib/reader.js");
+  const pages = [
+    "Last date for receipt of online applications 22.06.2026 (23:00 hours)\nLast date for receipt of online applications 22.06.2026 (23:00 hours)",
+    "Candidate must have been born not earlier than 02-08-1999 and not later than 01-08-2008.\nCandidate must have been born not earlier than 02-08-1996 and not later than 01-08-2006.\n06 Ex-Servicemen (ESM) 3 years after deduction of the military service\n02 OBC 3 years",
+    "Candidates are required to upload the scanned signature in JPEG format (10 to 20 KB). The photograph is captured live.",
+  ];
+
+  it("drops a date given twice and labels dates the model left as codes", () => {
+    const r = tidy(
+      "basics",
+      {
+        exam: { name: "X" },
+        dates: [
+          { what: "apply_end", kind: "apply_end", date: "2026-06-22", quote: "Last date for receipt of online applications 22.06.2026", page: 1 },
+          { what: "Application deadline", kind: "apply_end", date: "2026-06-22", quote: "Last date for receipt of online applications 22.06.2026", page: 1 },
+          { what: "Bad", kind: "exam", date: "22.06.2026", quote: "x", page: 1 },
+        ],
+      },
+      pages,
+    );
+    assert.equal(r.dates.length, 1);
+    assert.equal(r.dates[0].what, "Online applications close");
+    assert.equal(r.dates[0].check.status, "verified");
+  });
+
+  it("names rules that were all called 'All posts' by their age range", () => {
+    const r = tidy(
+      "age",
+      {
+        rules: [
+          { appliesTo: "All posts", bornFrom: "1999-08-02", bornTo: "2008-08-01", minAge: 18, maxAge: 27, quote: "born not earlier than 02-08-1999 and not later than 01-08-2008", page: 2 },
+          { appliesTo: "All posts", bornFrom: "1996-08-02", bornTo: "2006-08-01", minAge: 20, maxAge: 30, quote: "born not earlier than 02-08-1996 and not later than 01-08-2006", page: 2 },
+          { appliesTo: "Nobody", quote: "no dates at all", page: 2 },
+        ],
+        relaxations: [
+          { label: "OBC", years: "3 years", categories: ["obc", "XYZ"], quote: "02 OBC 3 years", page: 2 },
+          { label: "Ex-Servicemen (ESM)", years: 3, esm: true, quote: "06 Ex-Servicemen (ESM) 3 years after deduction of the military service", page: 2 },
+        ],
+      },
+      pages,
+    );
+    assert.deepEqual(r.rules.map((x) => x.appliesTo), ["Posts with age limit 18–27 years", "Posts with age limit 20–30 years"]);
+    assert.deepEqual(r.relaxations[0], { ...r.relaxations[0], years: 3, categories: ["OBC"], manual: false });
+    assert.equal(r.relaxations[1].manual, true);
+  });
+
+  it("won't let a live photo carry sizes or a signature's quote stand in for a photo", () => {
+    const r = tidy(
+      "uploads",
+      {
+        items: [
+          { kind: "photo", live: true, minKB: 10, maxKB: 20, quote: "The photograph is captured live", page: 3 },
+          { kind: "photo", live: false, minKB: 10, maxKB: 20, quote: "upload the scanned signature in JPEG format (10 to 20 KB)", page: 3 },
+        ],
+      },
+      pages,
+    );
+    assert.equal(r.items[0].maxKB, null);
+    assert.equal(r.items[0].check.status, "verified");
+    assert.equal(r.items[1].check.status, "check");
+    assert.match(r.items[1].check.why, /isn't about the photo/);
+  });
+
+  it("asks again when the relaxation table went missing", () => {
+    assert.equal(looksIncomplete("age", { rules: [{}], relaxations: [] }, "age relaxation table"), true);
+    assert.equal(looksIncomplete("age", { rules: [{}], relaxations: [] }, "no such table"), false);
+    assert.equal(looksIncomplete("basics", { exam: null, dates: [] }, ""), true);
   });
 });

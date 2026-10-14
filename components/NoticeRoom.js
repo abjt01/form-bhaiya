@@ -105,6 +105,9 @@ export default function NoticeRoom({ initial }) {
               {t.ok} of {t.total} answers found word for word in the notice
             </span>
             {t.total > t.ok && <span className="pill soon">{t.total - t.ok} to check by hand</span>}
+            <a className="jump" href="#candidate">
+              Check a candidate ↓
+            </a>
           </div>
         )}
       </header>

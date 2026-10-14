@@ -100,7 +100,7 @@ export default function Candidate({ notice }) {
   }
 
   return (
-    <section className="card">
+    <section className="card" id="candidate">
       <h2>Candidate at the counter</h2>
       {!rules.length && !r.basics?.fees?.length ? (
         <p className="muted">{notice.status === "reading" ? "This opens up as soon as the age limits and fees are read." : "The notice's age limits and fees weren't found, so there's nothing to check against."}</p>
